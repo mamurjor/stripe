@@ -10,8 +10,8 @@ $currency = "USD";
  * Remember to switch to your live publishable and secret key in production! 
  * See your keys here: https://dashboard.stripe.com/account/apikeys 
  */ 
-define('STRIPE_API_KEY', 'sk_test_51HCO93CqIYx6oZ8JEgybBfrZbbjTrrxHCALbniAC6KWi9e13fyFbbHlvGqjFBYiJudjH4j2k6USiaIW4os1YCSJU00sxPbhkke'); 
-define('STRIPE_PUBLISHABLE_KEY', 'pk_test_51HCO93CqIYx6oZ8JjQsqODDgKfsJrytUIlfBya0Gd2xDuP6j9rfxDPjTiJvAuPLSTzItfcXdMw0C4hKLBasEUSqq00qEfzsxTn'); 
+define('STRIPE_API_KEY', ''); 
+define('STRIPE_PUBLISHABLE_KEY', ''); 
   
 // Database configuration  
 define('DB_HOST', 'localhost');  
