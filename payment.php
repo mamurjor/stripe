@@ -1,6 +1,17 @@
 <?php 
 // Include configuration file  
-require_once 'config.php'; 
+//require_once 'config.php'; 
+
+define('STRIPE_API_KEY', 'sk_test_51HCO93CqIYx6oZ8JEgybBfrZbbjTrrxHCALbniAC6KWi9e13fyFbbHlvGqjFBYiJudjH4j2k6USiaIW4os1YCSJU00sxPbhkke'); 
+define('STRIPE_PUBLISHABLE_KEY', 'pk_test_51HCO93CqIYx6oZ8JjQsqODDgKfsJrytUIlfBya0Gd2xDuP6j9rfxDPjTiJvAuPLSTzItfcXdMw0C4hKLBasEUSqq00qEfzsxTn'); 
+ 
+$itemName = "Theme Development"; 
+$product_amount = $_POST['itemprice']; 
+
+$itemPrice   = $_GET['price'];
+
+
+$currency = "USD";  
  
 $payment_id = $statusMsg = ''; 
 $ordStatus = 'error'; 
@@ -12,6 +23,10 @@ if(!empty($_POST['stripeToken'])){
     $token  = $_POST['stripeToken']; 
     $name = $_POST['name']; 
     $email = $_POST['email']; 
+
+ 
+
+    
      
     // Include Stripe PHP library 
     require_once 'stripe-php/init.php'; 
@@ -61,23 +76,12 @@ if(!empty($_POST['stripeToken'])){
                 $payment_status = $chargeJson['status']; 
                  
                 // Include database connection file  
-                include_once 'dbConnect.php'; 
-                 $itemNumber="10225";
-                // Insert tansaction data into the database 
-                $sql = "INSERT INTO orders(name,email,item_name,item_number,item_price,item_price_currency,paid_amount,paid_amount_currency,txn_id,payment_status,created,modified) VALUES('".$name."','".$email."','".$itemName."','".$itemNumber."','".$itemPrice."','".$currency."','".$paidAmount."','".$paidCurrency."','".$transactionID."','".$payment_status."',NOW(),NOW())"; 
-                $insert = $db->query($sql); 
-                $payment_id = $db->insert_id; 
+       
+           
+           echo "Done";
                  
-                // If the order is successful 
-                if($payment_status == 'succeeded'){ 
-                    $ordStatus = 'success'; 
-                    $statusMsg = 'Your Payment has been Successful!'; 
-                }else{ 
-                    $statusMsg = "Your Payment has Failed!"; 
-                } 
-            }else{ 
-                $statusMsg = "Transaction has been failed!"; 
-            } 
+                
+            }
         }else{ 
             $statusMsg = "Charge creation failed! $api_error";  
         } 
@@ -92,7 +96,7 @@ if(!empty($_POST['stripeToken'])){
 <div class="container">
     <div class="status">
         <?php if(!empty($payment_id)){ ?>
-            <h1 class="<?php echo $ordStatus; ?>"><?php echo $statusMsg; ?></h1>
+           
 			
             <h4>Payment Information</h4>
             <p><b>Reference Number:</b> <?php echo $payment_id; ?></p>

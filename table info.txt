@@ -1,0 +1,10 @@
+brand table
+(name,code,logo)
+product(
+name,
+price_buy
+price_cell
+product_description
+product_image
+prduct_gallery
+product_qty

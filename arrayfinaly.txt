@@ -1,0 +1,473 @@
+Example #2 Type Casting and Overwriting example
+
+
+$array = array(
+    1    => "a",
+    "1"  => "b",
+    1.5  => "c",
+    true => "d",
+);
+var_dump($array);
+
+$array = array(
+    1    => "a",
+    "1"  => "b",
+    2.9  => "c",
+    false => "d",
+);
+var_dump($array);
+
+As all the keys in the above example are cast to 1, the value will be overwritten on every new element and the last assigned value "d" is the only one left over.
+PHP arrays can contain int and string keys at the same time as PHP does not distinguish between indexed and associative arrays.
+
+$array = array(
+    "foo" => "bar",
+    "bar" => "foo",
+    100   => -100,
+    -100  => 100,
+);
+var_dump($array);
+
+
+The key is optional. If it is not specified, PHP will use the increment of the largest previously used int key.
+Example #4 Indexed arrays without key
+
+$array = array("hadi", "jaman", "mamu", "mama");
+var_dump($array);
+
+
+It is possible to specify the key only for some elements and leave it out for others:
+Example #5 Keys not on all elements
+$array = array(
+         "a",
+         "b",
+    6 => "c",
+         "d",
+);
+var_dump($array);
+
+This example includes all variations of type casting of keys and overwriting of elements.
+Example #6 Complex Type Casting and Overwriting example
+
+$array = array(
+    1    => 'a',
+    '1'  => 'b', // the value "a" will be overwritten by "b"
+    1.5  => 'c', // the value "b" will be overwritten by "c"
+    -1 => 'd',
+    '01'  => 'e', // as this is not an integer string it will NOT override the key for 1
+    '1.5' => 'f', // as this is not an integer string it will NOT override the key for 1
+    true => 'g', // the value "c" will be overwritten by "g"
+    false => 'h',
+    '' => 'i',
+    null => 'j', // the value "i" will be overwritten by "j"
+    'k', // value "k" is assigned the key 2. This is because the largest integer key before that was 1
+    2 => 'l', // the value "k" will be overwritten by "l"
+);
+
+var_dump($array);
+
+Accessing array elements with square bracket syntax
+Array elements can be accessed using the array[key] syntax.
+Example #7 Accessing array elements
+$array = array(
+    "foo" => "bar",
+    42    => 24,
+    "multi" => array(
+    'kye'=>'ad',
+         "dimensional" => array(
+             "array" => "foo"
+         )
+    )
+);
+
+var_dump($array["foo"]);
+var_dump($array[42]);
+var_dump($array["multi"]["kye"]);
+var_dump($array["multi"]["dimensional"]["array"]);
+
+
+
+$a1=array("red","green");
+$a2=array("blue","yellow");
+$ekta_array=array_merge($a1,$a2);
+var_dump($ekta_array);
+
+
+$a=array("Volvo"=>"XC90","BMW"=>"X5","Toyota"=>"Highlander");
+print_r(array_keys($a));
+
+array_key_exists()
+$a=array("Volvo"=>"XC90","BMW"=>"X5");
+if (array_key_exists("Volvo",$a))
+  {
+  echo "Key exists!";
+  }
+else
+  {
+  echo "Key does not exist!";
+  }
+
+The array_shift() function removes the first element from an array, and returns the value of the removed element.
+array_shift()
+$a=array("a"=>"red","b"=>"green","c"=>"blue");
+echo array_shift($a)."<br>";
+print_r ($a);
+
+$a=array(0=>"red",1=>"green",2=>"blue");
+echo array_shift($a);
+print_r ($a);
+
+The array_unshift() function inserts new elements to an array. The new array values will be inserted in the beginning of the array.
+array_unshift()
+$a=array("a"=>"red","b"=>"green");
+array_unshift($a,"blue");
+
+The array_push() function inserts one or more elements to the end of an array.
+$a=array("red","green");
+array_push($a,"blue","yellow");
+print_r($a);
+
+
+The array_pop() function deletes the last element of an array.
+$a=array("red","green","blue");
+array_pop($a);
+print_r($a);
+The array_values() function returns an array containing all the values of an array.
+$a=array("Name"=>"Peter","Age"=>"41","Country"=>"USA");
+print_r(array_values($a));
+
+The array_map() function sends each value of an array to a user-made function, and returns an array with new values, given by the user-made function.
+function myfunction($num)
+{
+  return $num;
+}
+
+$a=array(1,2,3,4,5,12);
+print_r(array_map("myfunction",$a));
+
+The array_unique() function removes duplicate values from an array. If two or more array values are the same, the first appearance will be kept and the other will be removed.
+$a=array("a"=>"red","b"=>"green","c"=>"red");
+print_r(array_unique($a));
+
+The array_slice() function returns selected parts of an array.
+$a=array("red","green","blue","yellow","brown");
+print_r(array_slice($a,4));
+
+The array_diff() function compares the values of two (or more) arrays, and returns the differences.
+
+$a1=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+$a2=array("e"=>"red","f"=>"green","g"=>"blue");
+
+$result=array_diff($a1,$a2);
+print_r($result);
+
+The array_search() function search an array for a value and returns the key.
+$a=array("a"=>"red","b"=>"green","c"=>"blue");
+echo array_search("blue",$a);
+
+
+The array_reverse() function returns an array in the reverse order.
+$a=array("a"=>"Volvo","b"=>"BMW","c"=>"Toyota");
+print_r(array_reverse($a));
+
+
+Find maximum number from an array
+echo(max(array(4,6,8,10)) . "<br>");
+
+Find 2nd max number from an array
+$array = array('200', '15','69','122','50','201');
+$max_1 = $max_2 = 0;
+
+for ($i=0; $i<count($array); $i++) {
+    if ($array[$i] > $max_1) {
+      $max_2 = $max_1;
+      $max_1 = $array[$i];
+    } else if ($array[$i] > $max_2 && $array[$i] != $max_2) {
+      $max_2 = $array[$i];
+    }
+}
+echo "Max=".$max_1;
+echo "<br />"; 
+echo "Smax 2=".$max_2;
+
+
+Sort array from min to max
+// Returns maximum in array
+function getMax($array)
+{
+   $n = count($array);
+   $max = $array[0];
+   for ($i = 1; $i < $n; $i++)
+       if ($max < $array[$i])
+           $max = $array[$i];
+    return $max;      
+}
+ 
+// Returns maximum in array
+function getMin($array)
+{
+   $n = count($array);
+   $min = $array[0];
+   for ($i = 1; $i < $n; $i++)
+       if ($min > $array[$i])
+           $min = $array[$i];
+    return $min;      
+}
+ 
+// Driver code
+$array = array(1, 2, 3, 4, 5);
+echo(getMax($array));
+echo("\n");
+echo(getMin($array));
+
+
+Calculate average number of an array
+
+$a[] = '56';
+$a[] = '66';
+$a[] = '';
+$a[] = '58';
+$a[] = '85';
+$a[] = '';
+$a[] = '';
+$a[] = '76';
+$a[] = '';
+$a[] = '57';
+if(count($a)) {
+	$a = array_filter($a);
+	echo $average = array_sum($a)/count($a);
+}
+Merging 2 different types of array
+together
+
+$a1=array(1,2,3,);
+$a2=array("blue","yellow");
+print_r(array_merge($a1,$a2));
+
+Search data from an array
+$a=array("a"=>"red","b"=>"green","c"=>"blue");
+echo array_search("red",$a);
+
+Show array data in lowercase and
+uppercase
+
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+print_r(array_change_key_case($age,CASE_LOWER));
+
+Show array data in lowercase and
+uppercase
+$pets=array("a"=>"Cat","B"=>"Dog","c"=>"Horse","b"=>"Bird");
+print_r(array_change_key_case($pets,CASE_UPPER));
+
+Get unique values
+
+$a=array("a"=>"red","b"=>"green","c"=>"red");
+print_r(array_unique($a))
+
+Remove duplicate values
+
+$a=array("a"=>"red","b"=>"green","c"=>"red");
+print_r(array_unique($a));
+
+Check if email address is unique
+$a=array("a"=>"red","b"=>"green","c"=>"red");
+print_r(array_unique($a))
+
+Check unique username
+$a=array("a"=>"red","b"=>"green","c"=>"red");
+print_r(array_unique($a))
+
+
+Merge 2 comma separated lists with
+unique value only
+
+$list1 = "4, 5, 6, 7";
+  $list2 = "4, 5, 7, 8";
+  // combine both lists with unique values only
+  $result = implode("," , array_unique(array_merge(explode(",",$list1),explode(",", $list2))));
+  echo $result."\n";
+
+
+$a1 = array(
+    'a1' => array('a_name' => 'aaa', 'a_value' => 'aaaaa'),
+    'b1' => array('b_name' => 'bbb', 'b_value' => 'bbbbbb'),
+    'c1' => array('c_name' => 'ccc', 'c_value' => 'cccccc')
+);
+
+$a2 = array(
+    'b1' => array('b_name' => 'zzzzz'),
+);
+
+$result = check_diff_multi($a1, $a2);
+print '<pre>';
+print_r($result);
+print '</pre>';
+
+Difference between 2
+multi-dimensional arrays
+
+function check_diff_multi($array1, $array2){
+    $result = array();
+    foreach($array1 as $key => $val) {
+         if(isset($array2[$key])){
+           if(is_array($val) && $array2[$key]){
+               $result[$key] = check_diff_multi($val, $array2[$key]);
+           }
+       } else {
+           $result[$key] = $val;
+       }
+    }
+
+    return $result;
+};
+
+Check if all values are string or not
+
+function is_string_test($var)
+{
+    return is_string($var);
+}
+
+echo is_string_test("dd");
+
+function is_test_numeric($var)
+{
+    return is_numeric($var);
+}
+
+echo is_test_numeric(1);
+Union of 2 arrays
+// Merge two arrays where one key ('one') is same
+     
+$arr1 = array( 'zero' => 0,
+               'one' => 1,
+               'two' => 2, 10, 11, 12, 13
+        );
+         
+$arr2 = array( 'one' => 11,
+               'three' => 3,
+               'four' => 4, 12, 13, 14, 15
+        );
+     
+// Merging both array using array_merge() function
+ 
+// Here in $arr3 the value corresponding to
+// the key 'one' will be from $arr2 and
+// numeric keys will be renumbered
+     
+$arr3 = array_merge($arr1, $arr2);
+     
+echo "Result of array_merge() function\n";
+ 
+print_r($arr3);
+     
+// Merging both array using array union(+) operator
+// Here in $arr4 the value corresponding to the key
+// 'one' will be from $arr1 and numeric keys
+// which are repeated in $arr2 will be ignored
+     
+$arr4 = $arr1 + $arr2;
+     
+echo "\nResult of array union(+) operator\n";
+ 
+print_r($arr4);
+
+
+Filter out array data with some
+specific keys
+
+$arr = [
+    'foo' => 'bar',
+    1 => 'baz',
+    'qux' => 22,
+    3 => 123,
+    'quux' => 'quuz',
+];
+
+$filteredArr = array_filter(
+    $arr,
+    fn ($key) => is_numeric($key),
+    ARRAY_FILTER_USE_KEY
+);
+
+echo print_r($filteredArr, true); // [1 => 'baz', 3 => 123]
+
+Filter a multi-dimensional array
+
+$array = array(
+    array('name' => 'John Doe', 'email' => 'john@gmail.com'),
+    array('name' => 'Marry Lies', 'email' => 'marry@gmail.com'),
+    array('name' => 'Andrew Joe', 'email' => 'andrew@gmail.com'),
+);
+
+$like = 'jo';
+
+$result = array_filter($array, function ($item) use ($like) {
+    if (stripos($item['name'], $like) !== false) {
+        return true;
+    }
+    return false;
+});
+
+Remove all white spaces from an
+array
+
+
+$str = ' PHP  ';
+$new_str = trim($str);
+
+var_dump($new_str);
+
+
+$array = array('a', 'b ', ' c ');
+    var_export($array);
+ 
+    /*
+    array (
+        0 => 'a',
+        1 => 'b ',
+        2 => ' c ',
+    )
+    */
+ 
+    $trimmed_array = array_map('trim', $array);
+    var_export($trimmed_array);
+ 
+    /*
+    array (
+        0 => 'a',
+        1 => 'b',
+        2 => 'c',
+    )
+    */
+
+
+Combine 2 array and use one array
+data as keys and others as values
+
+$a1=array("red","green");
+$a2=array("blue","yellow");
+print_r(array_merge($a1,$a2));
+
+
+$str = "Hello world. It's a beautiful day.";
+print_r (explode(" ",$str));
+Convert string to array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

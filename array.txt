@@ -1,0 +1,79 @@
+14. Loops (for, foreach, while, do, do
+while)
+
+15. Arrays
+16. Array functions
+i. array()
+ii. is_array()
+iii. in_array()
+iv. array_merge()
+v. array_keys()
+vi. array_key_exists()
+vii. array_shift()
+viii. array_unshift()
+ix. array_push()
+x. array_pop()
+xi. array_values()
+xii. array_map()
+xiii. array_unique()
+xiv. array_slice()
+xv. array_diff()
+vi. array_search()
+xvii.array_reverse()
+
+17. Array problem and solution
+i. Find maximum number from an array
+ii. Find 2nd max number from an array
+iii. Sort array from min to max
+iv. Calculate average number of an array
+v. Merging 2 different types of array
+together
+vi. Search data from an array
+vii. Show array data in lowercase and
+uppercase
+
+
+viii. Get unique values
+ix. Remove duplicate values
+x. Check if email address is unique
+xi. Check unique username
+xii. Merge 2 comma separated lists with
+unique value only
+xiii. Difference between 2
+multi-dimensional arrays
+xiv. Check if all values are string or not
+xv. Union of 2 arrays
+xvi. Filter out array data with some
+specific keys
+xvii.Filter a multi-dimensional array.
+xviii. Remove all white spaces from an
+array
+xix. Combine 2 array and use one array
+data as keys and others as values
+xx. Convert string to array
+xxi. and many more problem and
+solutions.
+
+18. Random password generator
+(contains uppercase, lowercase,
+numeric and other)
+
+19. Numbers
+i. Making calculations
+ii. Using built-in numeric functions
+iii. Incrementing and decrementing
+
+
+
+Specifying with array() 
+An array can be created using the array() language construct. It takes any number of comma-separated key => value pairs as arguments.
+
+array(
+    key  => value,
+    key2 => value2,
+    key3 => value3,
+    ...
+)
+
+
+
